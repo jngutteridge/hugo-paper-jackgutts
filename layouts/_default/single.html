@@ -7,7 +7,7 @@
     {{ if ne .Type "page" }}
     <div class="text-sm opacity-60">
       {{ if .Date }}
-      <time>{{ .Date | time.Format ":date_medium" }}</time>
+      <time>{{ .Date | time.Format "2 January 2006" }}</time>
       {{ end }}<!---->
       {{ $single_author := or .Params.Author site.Author.name }}
       <!---->
@@ -38,16 +38,13 @@
   {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}<!---->
   {{ if and (gt (len $pages) 1) (in $pages . ) }}
   <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    {{ with $pages.Prev . }}
+    <a class="flex w-1/2 items-center rounded-r-md p-6 pl-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="{{ .Permalink }}"><span class="mr-1.5">←</span><span>{{ .Name }}</span></a>
+    {{ end }}<!---->
     {{ with $pages.Next . }}
     <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="{{ .Permalink }}"
-      ><span class="mr-1.5">←</span><span>{{ .Name }}</span></a
-    >
-    {{ end }}<!---->
-    {{ with $pages.Prev . }}
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      class="ml-auto flex w-1/2 items-center justify-end rounded-l-md p-6 pr-3 no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
       href="{{ .Permalink }}"
       ><span>{{ .Name }}</span><span class="ml-1.5">→</span></a
     >
