@@ -669,7 +669,7 @@ body {
 .prose :where(h1):not(:where([class~="not-prose"] *)) {
   color: var(--tw-prose-headings);
   font-weight: normal;
-  font-size: 2.25em;
+  font-size: 1.75em;
   margin-top: 0;
   margin-bottom: 0.8888889em;
   line-height: 1.1111111;
@@ -1576,7 +1576,6 @@ body {
 }
 
 article {
-  font-size: 1.125rem;
   line-height: 1.75rem;
   line-height: 1.9;
   --tw-text-opacity: 1;
